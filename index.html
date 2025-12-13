@@ -159,9 +159,20 @@ updateBalanceUI();
 const list = document.getElementById("sectionsList");
 
 const USERS_LIST = [
-  "Levi Efrain","Jonathan Francisco","Brian steven","Cristian","Fátima","Anderson","Steven arturo","Nicolás"
+  "Levi Efrain","Jonathan Francisco","Brian Steven","Cristian","Fátima","Anderson","Steven Arturo","Nicolás"
 ];
-const DESCRIPTIONS = Array(USERS_LIST.length).fill("Todavía no hay descripción");
+
+// Cada usuario tiene su propia descripción individual
+const DESCRIPTIONS = [
+  "Donen pa la causa #noseacodosxd", // Levi
+  "Todavía no tiene descripción.", // Jonathan
+  "Todavía no tiene descripción.", // Brian
+  "Todavía no tiene descripción.", // Cristian
+  "Todavía no tiene descripción.", // Fátima
+  "Donen pa los chetos.", // Anderson
+  "Todavía no tiene descripción.", // Steven
+  "Todavía no tiene descripción."  // Nicolás
+];
 
 function createUserCard(i){
   const card = document.createElement("div");
@@ -253,7 +264,7 @@ function attemptDonate(sectionIndex, amount, cardEl, username){
   setTimeout(()=> {
     hideOverlay();
     const text = encodeURIComponent(`Acabo de donar ${amount} BLITZ a ${username}`);
-    window.open(`https://wa.me/${WHATSAPP_NUM}?text=${text}`, "_blank");
+    window.open(`https://wa.me/50373826693?text=${text}`, "_blank");
   }, 2000);
 }
 
@@ -282,4 +293,4 @@ overlay.addEventListener("click", (e)=>{ if(e.target === overlay) hideOverlay();
 </script>
 
 </body>
-</html>
+</html> 
