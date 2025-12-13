@@ -3,86 +3,64 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-
-<!-- ✔ Google Site Verification (correctamente colocado) -->
-<meta name="google-site-verification" content="vD1F80dNjXhWhgxG7U8fRYBPnhG6ThwzzU76gc9pDGc" />
-
-
-<title>BlitzTok - Donate</title>
+<title>BlitzTok - Donate + Login</title>
 <style>
-  :root{
-    --bg:#050606;
-    --card:#0f0f10;
-    --accent:#00ff75;
-    --muted:#9aa7a7;
-    --glass: rgba(255,255,255,0.03);
-    --white:#ffffff;
-  }
-  html,body{height:100%;margin:0;background:var(--bg);font-family:Inter, "Segoe UI", Arial, sans-serif;color:var(--white)}
-  .app { max-width:480px; margin:0 auto; padding:18px; }
-
-  header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
-  header h1{ margin:0; font-size:20px; color:var(--accent); text-shadow:0 0 8px #00ff7588; font-weight:900; }
-
-  .balance { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px 14px; border-radius:12px; display:flex; align-items:center; gap:10px; box-shadow:0 8px 22px rgba(0,255,117,0.06); }
-  .balance .label{font-size:12px;color:var(--muted); font-weight:700}
-  .balance .amount{font-weight:900;color:#000;background:var(--accent);padding:8px 12px;border-radius:10px;font-size:15px}
-
-  .list { display:flex; flex-direction:column; gap:14px; margin-top:10px; }
-
-  .card{
-    background:linear-gradient(180deg,var(--card), #0b0b0b);
-    border-radius:16px;
-    padding:14px;
-    box-shadow:0 12px 26px rgba(0,0,0,0.6), 0 0 10px rgba(0,255,117,0.04);
-    transition: transform .12s ease, box-shadow .12s;
-    position:relative;
-  }
-  .card:active{ transform: translateY(-2px) }
-
-  .card h1{ font-size:18px; margin:0 0 8px 0; color:var(--accent); font-weight:900; }
-
-  .info{
-    font-size:15px;
-    color:#d7e7df;
-    min-height:56px;
-    margin-bottom:12px;
-    border-radius:10px;
-    padding:10px;
-    background:var(--glass);
-    line-height:1.2;
-  }
-
-  .controls{ display:flex; gap:10px; align-items:center; }
-  .controls input[type="number"]{ width:55%; padding:12px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:#060606; color:#fff; font-weight:800; font-size:16px; }
-
-  .btn { display:inline-block; background:var(--accent); color:#000; padding:12px 14px; border-radius:12px; font-weight:900; text-decoration:none; cursor:pointer; box-shadow:0 12px 28px rgba(0,255,117,0.08); transition: transform .12s, box-shadow .12s; border:none; font-size:15px; }
-  .btn:active{ transform: translateY(1px) }
-  .btn.ghost { background:transparent;color:var(--accent);border:1px solid rgba(0,255,117,0.12);font-weight:800; }
-
-  .donation-meta{ margin-top:12px; font-size:13px; color:var(--muted); display:flex; justify-content:space-between; align-items:center; gap:8px; }
-
-  .claimed-list{ margin-top:10px; font-size:13px; color:#bcdacb; background: rgba(0,0,0,0.14); padding:8px;border-radius:10px; max-height:120px; overflow:auto; }
-
-  .keys-area{ margin-top:18px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px;border-radius:12px; display:flex; gap:10px; align-items:center; }
-  .keys-area input{ flex:1; padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04); background:#060606;color:#fff;font-weight:800;font-size:15px; }
-  .keys-area .redeem-btn{ padding:12px 14px; font-size:15px }
-
-  .overlay{ position:fixed; left:0; top:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.6); z-index:999; visibility:hidden; opacity:0; transition:.18s; }
-  .overlay.show{ visibility:visible; opacity:1 }
-  .overlay .modal{ background:#07110b; padding:18px; border-radius:12px; text-align:center; color:#fff; min-width:260px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
-
-  footer{ margin-top:18px; font-size:13px; color:var(--muted); text-align:center }
-
-  @media (min-width:481px){
-    .app{ max-width:720px; }
-    .controls input[type="number"]{ width:45%; }
-  }
+:root{
+  --bg:#050606;
+  --card:#0f0f10;
+  --accent:#00ff75;
+  --muted:#9aa7a7;
+  --glass: rgba(255,255,255,0.03);
+  --white:#ffffff;
+}
+html,body{height:100%;margin:0;background:var(--bg);font-family:Inter, "Segoe UI", Arial, sans-serif;color:var(--white);}
+.hidden{display:none;}
+.app { max-width:480px; margin:0 auto; padding:18px; }
+header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+header h1{ margin:0; font-size:20px; color:var(--accent); text-shadow:0 0 8px #00ff7588; font-weight:900; }
+.balance { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px 14px; border-radius:12px; display:flex; align-items:center; gap:10px; box-shadow:0 8px 22px rgba(0,255,117,0.06); }
+.balance .label{font-size:12px;color:var(--muted); font-weight:700}
+.balance .amount{font-weight:900;color:#000;background:var(--accent);padding:8px 12px;border-radius:10px;font-size:15px}
+.list { display:flex; flex-direction:column; gap:14px; margin-top:10px; }
+.card{ background:linear-gradient(180deg,var(--card), #0b0b0b); border-radius:16px; padding:14px; box-shadow:0 12px 26px rgba(0,0,0,0.6), 0 0 10px rgba(0,255,117,0.04); transition: transform .12s ease, box-shadow .12s; position:relative; }
+.card:active{ transform: translateY(-2px); }
+.card h1{ font-size:18px; margin:0 0 8px 0; color:var(--accent); font-weight:900; }
+.info{ font-size:15px; color:#d7e7df; min-height:56px; margin-bottom:12px; border-radius:10px; padding:10px; background:var(--glass); line-height:1.2; }
+.controls{ display:flex; gap:10px; align-items:center; }
+.controls input[type="number"]{ width:55%; padding:12px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:#060606; color:#fff; font-weight:800; font-size:16px; }
+.btn { display:inline-block; background:var(--accent); color:#000; padding:12px 14px; border-radius:12px; font-weight:900; text-decoration:none; cursor:pointer; box-shadow:0 12px 28px rgba(0,255,117,0.08); transition: transform .12s, box-shadow .12s; border:none; font-size:15px; }
+.btn:active{ transform: translateY(1px); }
+.btn.ghost { background:transparent;color:var(--accent);border:1px solid rgba(0,255,117,0.12);font-weight:800; }
+.donation-meta{ margin-top:12px; font-size:13px; color:var(--muted); display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.claimed-list{ margin-top:10px; font-size:13px; color:#bcdacb; background: rgba(0,0,0,0.14); padding:8px;border-radius:10px; max-height:120px; overflow:auto; }
+.keys-area{ margin-top:18px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px;border-radius:12px; display:flex; gap:10px; align-items:center; }
+.keys-area input{ flex:1; padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04); background:#060606;color:#fff;font-weight:800;font-size:15px; }
+.keys-area .redeem-btn{ padding:12px 14px; font-size:15px }
+.overlay{ position:fixed; left:0; top:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.6); z-index:999; visibility:hidden; opacity:0; transition:.18s; }
+.overlay.show{ visibility:visible; opacity:1; }
+.overlay .modal{ background:#07110b; padding:18px; border-radius:12px; text-align:center; color:#fff; min-width:260px; box-shadow:0 18px 40px rgba(0,0,0,0.7); }
+footer{ margin-top:18px; font-size:13px; color:var(--muted); text-align:center; }
+/* LOGIN STYLES */
+#loginCard { max-width:400px; margin:40px auto; padding:18px; background:var(--card); border-radius:16px; text-align:center; }
+#loginCard input{ width:80%; margin:8px 0; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:#060606; color:#fff; font-weight:800; }
+#loginCard button{ width:84%; margin:8px 0; }
+#loginCard h2{ margin-bottom:14px; color:var(--accent); }
+#loginCard .error{ color:#ff5c5c; margin-top:6px; font-weight:700; }
 </style>
 </head>
 <body>
-<div class="app" role="application" aria-label="BlitzTok donate app">
+
+<!-- LOGIN -->
+<div id="loginCard">
+  <h2>Iniciar sesión</h2>
+  <input id="loginUser" placeholder="Nombre de usuario">
+  <input id="loginPass" type="password" placeholder="Contraseña 🔐">
+  <button class="btn btn-main" onclick="login()">Entrar</button>
+  <div id="loginError" class="error"></div>
+</div>
+
+<!-- APP PRINCIPAL -->
+<div class="app hidden" id="donateApp" role="application" aria-label="BlitzTok donate app">
   <header>
     <h1>BlitzTok — plataforma de donaciones.</h1>
     <div class="balance" aria-live="polite" title="Blitz disponibles">
@@ -111,9 +89,34 @@
 </div>
 
 <script>
+/* LOGIN USERS */
+const USERS = {
+  "Levittochimi56": { pass:"levitiñochimino561", saldo:4 },
+  "Jonathan9091":   { pass:"Jonansa812", saldo:1 },
+  "Brianzmx17":     { pass:"Brianazx87", saldo:0 },
+  "NicolAZX881":    { pass:"NICOA192", saldo:1 },
+  "STEV172991":     { pass:"Stevnc8114", saldo:0 },
+  "Andersxn2012":   { pass:"ANDERSXN9182", saldo:0 }
+};
+let usuarioActual = null;
+
+function login(){
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const err = document.getElementById('loginError');
+  if(!USERS[user] || USERS[user].pass !== pass){
+    err.textContent = "Usuario o contraseña incorrectos";
+    return;
+  }
+  usuarioActual = user;
+  document.getElementById('loginCard').classList.add('hidden');
+  document.getElementById('donateApp').classList.remove('hidden');
+  document.getElementById('saldoBox').textContent = USERS[usuarioActual].saldo;
+}
+
+/* DONATIONS & KEYS */
 const WHATSAPP_NUM = "50373826693";
 const RECHARGE_URL = "https://newbrothersstudios.github.io/BlitzTok-donate-to-people/";
-
 const KEY_VALUES = {
   "ABC1234BLITZ": 40,
   "KEY123BLITZ": 150,
@@ -155,67 +158,27 @@ updateBalanceUI();
 
 const list = document.getElementById("sectionsList");
 
-// Usuarios con input y botones
-const USERS = [
-  "Levi Efrain",
-  "Jonathan Francisco",
-  "Brian steven",
-  "Cristian",
-  "Fátima",
-  "Anderson",
-  "Steven arturo",
-  "Nicolás"
+const USERS_LIST = [
+  "Levi Efrain","Jonathan Francisco","Brian steven","Cristian","Fátima","Anderson","Steven arturo","Nicolás"
 ];
-const DESCRIPTIONS = [
-  "Todavía no hay descripción",
-  "Todavía no hay descripción",
-  "Todavía no hay descripción",
-  "Todavía no hay descripción",
-  "Todavía no hay descripción",
-  "HOLA, DONA PA LOS CHETOS",
-  "Todavía no hay descripción",
-  "Todavía no hay descripción"
-];
-
-// Secciones de donaciones manuales (solo mostrar)
-const DONACIONES = [
-  "Levi Efrain",
-  "Jonathan Francisco",
-  "Brian steven",
-  "Cristian",
-  "Fátima",
-  "Anderson",
-  "Steven arturo",
-  "Nicolás"
-];
-const DON_DESCRIPTIONS = [
-  "A Levi Efrain se le ha donado la cantidad de: 2 Blitz ",
-  "A Jonathan Francisco se le ha donado la cantidad de: 0 Blitz ",
-  "A brian Steven se le ha donado la cantidad de: 3 blitz",
-  "A Cristian se le ha donado la cantidad de: 0 Blitz ",
-  "A Fátima se le ha donado la cantidad de: 0 blitz",
-  "A Anderson  se le ha donado la cantidad de: 49 Blitz ",
-  "A Steven arturo se le ha donado la cantidad de: 0 Blitz ",
-  "A Nicolás se le ha donado la cantidad de: 1 Blitz "
-];
+const DESCRIPTIONS = Array(USERS_LIST.length).fill("Todavía no hay descripción");
 
 function createUserCard(i){
   const card = document.createElement("div");
   card.className = "card";
   card.dataset.index = i;
   card.innerHTML = `
-    <h1>${USERS[i]}</h1>
+    <h1>${USERS_LIST[i]}</h1>
     <div class="info">${DESCRIPTIONS[i]}</div>
 
     <div class="controls">
-      <input type="number" min="1" placeholder="Cantidad BLITZ" class="donInput" aria-label="Cantidad a donar">
+      <input type="number" min="1" placeholder="Cantidad BLITZ" class="donInput">
       <button class="btn donateBtn">Donar</button>
       <button class="btn ghost viewHistory">Historial</button>
     </div>
 
     <div class="donation-meta">
       <div class="donatedTot">Donado a este usuario: <strong>0</strong> BLITZ</div>
-      <div style="font-size:13px;color:var(--muted)"> </div>
     </div>
 
     <div class="claimed-list" style="display:none"></div>
@@ -225,8 +188,6 @@ function createUserCard(i){
   const totEl = card.querySelector(".donatedTot strong");
   totEl.textContent = Number(state.donations[i] || 0);
 
-  refreshClaimed(card, i);
-
   const donateBtn = card.querySelector(".donateBtn");
   const input = card.querySelector(".donInput");
   const viewHistoryBtn = card.querySelector(".viewHistory");
@@ -234,11 +195,11 @@ function createUserCard(i){
   donateBtn.addEventListener("click", ()=>{
     const raw = Number(input.value || 0);
     if(!raw || raw <= 0){
-      showOverlay(`<div class="modal"><div style="font-weight:800">Ingresa una cantidad válida.</div><div style="margin-top:12px"><button class="btn" onclick="hideOverlay()">Cerrar</button></div></div>`);
+      showOverlay(`<div class="modal"><div>Ingresa una cantidad válida.</div><div style="margin-top:12px"><button class="btn" onclick="hideOverlay()">Cerrar</button></div></div>`);
       return;
     }
     const amount = Math.floor(raw);
-    attemptDonate(i, amount, card, USERS[i]);
+    attemptDonate(i, amount, card, USERS_LIST[i]);
   });
 
   viewHistoryBtn.addEventListener("click", ()=>{
@@ -258,56 +219,24 @@ function createUserCard(i){
   });
 }
 
-function createDonationCard(i){
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `
-    <h1>${DONACIONES[i]}</h1>
-    <div class="info">${DON_DESCRIPTIONS[i]}</div>
-  `;
-  list.appendChild(card);
-}
+for(let i=0;i<USERS_LIST.length;i++){ createUserCard(i); }
 
-// Crear 8 usuarios + 8 donaciones
-for(let i=0;i<8;i++){
-  createUserCard(i);
-}
-for(let i=0;i<8;i++){
-  createDonationCard(i);
-}
-
-function updateBalanceUI(){ document.getElementById("saldoBox").textContent = `${state.balance || 0} BLITZ`; }
-
-function refreshClaimed(cardEl, sectionIndex){
-  const claimedList = cardEl.querySelector(".claimed-list");
-  const items = state.history ? state.history.filter(h=>h.section===sectionIndex) : [];
-  if(items.length){
-    claimedList.style.display = "block";
-    claimedList.innerHTML = items.slice(-5).reverse().map(it => {
-      const d = new Date(it.time);
-      return `<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03)"><strong>+${it.amount} BLITZ</strong><div style="font-size:12px;color:var(--muted)">${d.toLocaleString()}</div></div>`;
-    }).join("");
-  } else {
-    claimedList.style.display = "none";
-    claimedList.innerHTML = "";
-  }
-}
+function updateBalanceUI(){ document.getElementById("saldoBox").textContent = (USERS[usuarioActual]?.saldo || 0) + " BLITZ"; }
 
 function attemptDonate(sectionIndex, amount, cardEl, username){
-  state = loadState();
-  if(amount > state.balance){
+  if(amount > USERS[usuarioActual].saldo){
     showOverlay(`<div class="modal">
-      <div style="font-weight:900;font-size:16px">No tienes Blitz suficientes</div>
-      <div style="color:var(--muted);margin-top:8px">Saldo: ${state.balance} BLITZ — intentas donar: ${amount} BLITZ</div>
+      <div>No tienes Blitz suficientes</div>
+      <div style="margin-top:8px">Saldo: ${USERS[usuarioActual].saldo} BLITZ — intentas donar: ${amount} BLITZ</div>
       <div style="display:flex;gap:10px;margin-top:14px;justify-content:center">
-        <button class="btn" onclick="location.href='${RECHARGE_URL}'">Comprar Blitz</button>
+        <button class="btn" onclick="window.open('${RECHARGE_URL}','_blank')">Comprar Blitz</button>
         <button class="btn ghost" onclick="hideOverlay()">Cerrar</button>
       </div>
     </div>`);
     return;
   }
 
-  state.balance -= amount;
+  USERS[usuarioActual].saldo -= amount;
   state.donations[sectionIndex] = (state.donations[sectionIndex]||0) + amount;
   state.history.push({ section: sectionIndex, amount, time: Date.now() });
   saveState(state);
@@ -317,26 +246,23 @@ function attemptDonate(sectionIndex, amount, cardEl, username){
   if(card){
     const strong = card.querySelector(".donatedTot strong");
     strong.textContent = state.donations[sectionIndex];
-    refreshClaimed(card, sectionIndex);
   }
 
-  showOverlay(`<div class="modal"><div style="font-weight:900;font-size:16px">GRACIAS POR DONAR A ${username}</div><div style="color:var(--muted);margin-top:8px">Redirigiendo a WhatsApp...</div></div>`);
+  showOverlay(`<div class="modal"><div>GRACIAS POR DONAR A ${username}</div></div>`);
 
   setTimeout(()=> {
     hideOverlay();
     const text = encodeURIComponent(`Acabo de donar ${amount} BLITZ a ${username}`);
     window.open(`https://wa.me/${WHATSAPP_NUM}?text=${text}`, "_blank");
-  }, 3000);
+  }, 2000);
 }
 
-// Reclamar key
 document.getElementById("redeemBtn").addEventListener("click", ()=>{
   const raw = (document.getElementById("keyInput").value || "").trim();
   if(!raw){ showOverlay(`<div class="modal"><div>Ingresa una key válida.</div><div style="margin-top:12px"><button class="btn" onclick="hideOverlay()">Cerrar</button></div></div>`); return; }
   const key = raw;
-  state = loadState();
   if(state.keysUsed[key]){
-    showOverlay(`<div class="modal"><div>Esta key ya fue usada en este navegador.</div><div style="margin-top:12px"><button class="btn" onclick="hideOverlay()">Cerrar</button></div></div>`);
+    showOverlay(`<div class="modal"><div>Esta key ya fue usada.</div><div style="margin-top:12px"><button class="btn" onclick="hideOverlay()">Cerrar</button></div></div>`);
     return;
   }
   const prize = KEY_VALUES[key];
@@ -344,7 +270,7 @@ document.getElementById("redeemBtn").addEventListener("click", ()=>{
     showOverlay(`<div class="modal"><div>Key inválida.</div><div style="margin-top:12px"><button class="btn" onclick="hideOverlay()">Cerrar</button></div></div>`);
     return;
   }
-  state.balance += prize;
+  USERS[usuarioActual].saldo += prize;
   state.keysUsed[key] = true;
   saveState(state);
   updateBalanceUI();
@@ -354,5 +280,6 @@ document.getElementById("redeemBtn").addEventListener("click", ()=>{
 
 overlay.addEventListener("click", (e)=>{ if(e.target === overlay) hideOverlay(); });
 </script>
+
 </body>
 </html>
