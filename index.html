@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -110,11 +111,11 @@ footer{ margin-top:20px; font-size:13px; color:var(--muted); text-align:center; 
 function hablar(texto) {
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(texto);
-    utterance.lang = 'es-ES'; // o 'es-MX' si quieres acento mexicano
+    utterance.lang = 'es-ES';
     utterance.rate = 1;
     utterance.pitch = 1;
     utterance.volume = 1;
-    speechSynthesis.cancel(); // Cancela cualquier voz anterior
+    speechSynthesis.cancel();
     speechSynthesis.speak(utterance);
   }
 }
@@ -172,7 +173,7 @@ function login(){
 
   hablar(`Bienvenido ${user}`);
 
-  setTimeout(updateBalanceUI, 100); // Arregla el congelamiento
+  setTimeout(updateBalanceUI, 100);
 }
 
 /* DATA */
@@ -290,18 +291,22 @@ function attemptDonate(sectionIndex, amount, username){
 
   showOverlay(`<div class="modal"><div style="font-size:24px">¡DONADO!<br>+\( {amount} BLITZ a \){username} </div></div>`);
 
+  // MENSAJE WHATSAPP ÉPICO Y PERSONALIZADO
   setTimeout(()=> {
     hideOverlay();
-    const mensaje = `¡ACABO DE DONAR \( {amount} BLITZ A \){username.toUpperCase()} EN BLITZTOK! 🩵💥🚀
+    const mensaje = `🔥 ¡DONACIÓN ÉPICA EN BLITZTOK! 🔥
 
-${usuarioActual} es el más generoso del grupo 😎👑
+\( {usuarioActual} acaba de mandarle \){amount} BLITZ a ${username.toUpperCase()} 😱💥🩵
 
-¡Gracias por el apoyo, pana! ❤️
+¡El pana más generoso del grupo! 👑
 
-#BlitzTok #DonaciónÉpica`;
+¿Quién se anima a superar esta donación? 🚀
+
+#BlitzTok #DonaciónLegendaria`;
     const text = encodeURIComponent(mensaje);
     window.open(`https://wa.me/50373826693?text=${text}`, "_blank");
   }, 2200);
+}
 
 document.getElementById("redeemBtn").addEventListener("click", (e) => { rippleEffect(e, document.getElementById("redeemBtn"));
   const raw = (document.getElementById("keyInput").value || "").trim().toUpperCase();
@@ -317,7 +322,6 @@ document.getElementById("redeemBtn").addEventListener("click", (e) => { rippleEf
   popBalance();
   document.getElementById("keyInput").value = "";
 
-  // EFECTOS + VOZ
   playSound('redeemSound');
   vibrate();
   confettiBlast();
