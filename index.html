@@ -292,10 +292,16 @@ function attemptDonate(sectionIndex, amount, username){
 
   setTimeout(()=> {
     hideOverlay();
-    const text = encodeURIComponent(`¡Acabo de donar \( {amount} BLITZ a \){username} en BlitzTok! 💥🩵`);
+    const mensaje = `¡ACABO DE DONAR \( {amount} BLITZ A \){username.toUpperCase()} EN BLITZTOK! 🩵💥🚀
+
+${usuarioActual} es el más generoso del grupo 😎👑
+
+¡Gracias por el apoyo, pana! ❤️
+
+#BlitzTok #DonaciónÉpica`;
+    const text = encodeURIComponent(mensaje);
     window.open(`https://wa.me/50373826693?text=${text}`, "_blank");
   }, 2200);
-}
 
 document.getElementById("redeemBtn").addEventListener("click", (e) => { rippleEffect(e, document.getElementById("redeemBtn"));
   const raw = (document.getElementById("keyInput").value || "").trim().toUpperCase();
