@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>BlitzTok - Donate + Login</title>
 
-<!-- CONFETTI (ligero y sin dependencias pesadas) -->
+<!-- CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <!-- SONIDOS -->
@@ -106,6 +106,19 @@ footer{ margin-top:20px; font-size:13px; color:var(--muted); text-align:center; 
 </div>
 
 <script>
+// VOZ INTEGRADA (español natural)
+function hablar(texto) {
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = 'es-ES'; // o 'es-MX' si quieres acento mexicano
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    speechSynthesis.cancel(); // Cancela cualquier voz anterior
+    speechSynthesis.speak(utterance);
+  }
+}
+
 // EFECTOS
 function playSound(id) {
   const sound = document.getElementById(id);
@@ -126,7 +139,7 @@ function confettiBlast() {
 function popBalance() {
   const box = document.getElementById('balanceBox');
   box.classList.remove('pop');
-  void box.offsetWidth; // Trigger reflow
+  void box.offsetWidth;
   box.classList.add('pop');
 }
 function rippleEffect(e, btn) {
@@ -141,7 +154,7 @@ const USERS = {
   "Brianzmx17":     { pass:"Brianazx87", saldo:6 },
   "NicolAZX881":    { pass:"NICOA192", saldo:1 },
   "STEV172991":     { pass:"Stevnc8114", saldo:3 },
-  "Andersxn2012":   { pass:"ANDERSXN9182", saldo:1,000 }
+  "Andersxn2012":   { pass:"ANDERSXN9182", saldo:1000 }
 };
 let usuarioActual = null;
 
@@ -156,7 +169,10 @@ function login(){
   usuarioActual = user;
   document.getElementById('loginCard').classList.add('hidden');
   document.getElementById('donateApp').classList.add('show');
-  updateBalanceUI();
+
+  hablar(`Bienvenido ${user}`);
+
+  setTimeout(updateBalanceUI, 100); // Arregla el congelamiento
 }
 
 /* DATA */
@@ -240,7 +256,10 @@ function createUserCard(i){
 for(let i=0;i<USERS_LIST.length;i++){ createUserCard(i); }
 
 function updateBalanceUI(){ 
-  document.getElementById("saldoBox").textContent = (USERS[usuarioActual]?.saldo || 0) + " BLITZ"; 
+  const saldoBox = document.getElementById("saldoBox");
+  if (saldoBox && usuarioActual && USERS[usuarioActual]) {
+    saldoBox.textContent = USERS[usuarioActual].saldo + " BLITZ";
+  }
 }
 
 function attemptDonate(sectionIndex, amount, username){
@@ -263,10 +282,12 @@ function attemptDonate(sectionIndex, amount, username){
   const card = document.querySelector(`.card[data-index="${sectionIndex}"]`);
   if(card){ card.querySelector(".donatedTot strong").textContent = state.donations[sectionIndex]; }
 
-  // EFECTOS ÉPICOS
+  // EFECTOS ÉPICOS + VOZ
   playSound('donateSound');
   vibrate();
   confettiBlast();
+  hablar(`Donaste \( {amount} Blitz a \){username}`);
+
   showOverlay(`<div class="modal"><div style="font-size:24px">¡DONADO!<br>+\( {amount} BLITZ a \){username} </div></div>`);
 
   setTimeout(()=> {
@@ -290,9 +311,12 @@ document.getElementById("redeemBtn").addEventListener("click", (e) => { rippleEf
   popBalance();
   document.getElementById("keyInput").value = "";
 
+  // EFECTOS + VOZ
   playSound('redeemSound');
   vibrate();
   confettiBlast();
+  hablar(`Reclamaste ${prize} Blitz`);
+
   showOverlay(`<div class="modal"><div style="font-size:26px;font-weight:900">¡+${prize} BLITZ! 🩵💥</div><div style="margin-top:16px"><button class="btn" onclick="hideOverlay()">Genial</button></div></div>`);
 });
 
